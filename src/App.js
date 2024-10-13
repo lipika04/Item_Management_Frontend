@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Login from './components/Login';
+import ItemManager from './components/ItemManagement';
+import UserRegistration from './components/Register';
+import FileManager from './components/FileManager';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+
+
+    return (
+        <Router>
+            <Routes>
+                {/* <Route path="/login" element={isLoggedIn ? <Navigate to="/items" /> : <Login onLoginSuccess={handleLoginSuccess} />} /> */}
+                {/* <Route path="/items" element={isLoggedIn ? <ItemManager onLogOutSuccess={handleLogoutSuccess} /> : <Navigate to="/login" />} /> */}
+                <Route path='/items' element={<ItemManager/>}/>
+                <Route path='/register' element= {<UserRegistration/>} />
+                <Route path="/" element={<Login/>} />
+                <Route path='/files' element={<FileManager/>}/>
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
